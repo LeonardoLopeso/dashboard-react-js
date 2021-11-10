@@ -1,5 +1,10 @@
 import './Main.css';
 import Chart from '../charts/Chart';
+import { RiUserVoiceLine, RiTimer2Line } from 'react-icons/ri';
+import { BsCalendar2Month } from 'react-icons/bs';
+import { CgScreen } from 'react-icons/cg';
+import Reports from '../reports';
+
 
 const Main = () => {
     return (
@@ -7,40 +12,40 @@ const Main = () => {
             <div className="main__container">
                 <div className="main__title">
                     <div className="main__greeting">
-                        <h1>Olá Leoanrdo Lopes</h1>
+                        <h1>Olá Leonardo Lopes</h1>
                         <p>Bem vindo ao seu painel</p>
                     </div>
                 </div>
 
                 <div className="main__cards">
                     <div className="card">
-                        <i className="fa fa-file-text fa-2x text-lightblue"></i>
+                        <RiUserVoiceLine size="32" />
                         <div className="card_inner">
-                            <p className="text-primary-p">Métrica 01</p>
-                            <span className="font-bold text-title">578</span>
+                            <p className="text-primary-p">Total de atendimentos</p>
+                            <span className="font-bold text-title">215</span>
                         </div>
                     </div>
 
                     <div className="card">
-                        <i className="fa fa-money fa-2x text-red"></i>
+                        <BsCalendar2Month size="32" />
                         <div className="card_inner">
-                            <p className="text-primary-p">Métrica 02</p>
+                            <p className="text-primary-p">Atendimentos do mês</p>
                             <span className="font-bold text-title">25</span>
                         </div>
                     </div>
 
                     <div className="card">
-                        <i className="fa fa-archive fa-2x text-yellow"></i>
+                        <RiTimer2Line size="32" />
                         <div className="card_inner">
-                            <p className="text-primary-p">Métrica 03</p>
+                            <p className="text-primary-p">Tempo médio de atendimento</p>
                             <span className="font-bold text-title">150</span>
                         </div>
                     </div>
 
                     <div className="card">
-                        <i className="fa fa-bars fa-2x text-green"></i>
+                        <CgScreen size="32" />
                         <div className="card_inner">
-                            <p className="text-primary-p">Métrica 04</p>
+                            <p className="text-primary-p">Qtd De Totens</p>
                             <span className="font-bold text-title">55</span>
                         </div>
                     </div>                    
@@ -50,10 +55,10 @@ const Main = () => {
                     <div className="charts__left">
                         <div className="charts__left__title">
                             <div>
-                                <h1>Daily Reports</h1>
+                                <h1>Gráfico Mensal</h1>
                                 <p>Natal, RN</p>
                             </div>
-                            <i className="fa fa-usd"></i>
+                            {/* <i className="fa fa-usd"></i> */}
                         </div>
                         <Chart />
                     </div>
@@ -62,30 +67,12 @@ const Main = () => {
 
                         <div className="charts__right__title">
                             <div>
-                                <h1>Daily Reports</h1>
+                                <h1>Relatório</h1>
                                 <p>Natal, RN</p>
                             </div>
-                            <i className="fa fa-area-chart"></i>
+                            {/* <i className="fa fa-area-chart"></i> */}
                         </div>
-                        
-                        <div className="charts__right__cards">
-                            <div className="card1">
-                                <h1>Lucro</h1>
-                                <p>R$ 2500,00</p>
-                            </div>
-                            <div className="card2">
-                                <h1>Pagamentos</h1>
-                                <p>R$ 250,00</p>
-                            </div>
-                            <div className="card3">
-                                <h1>Custo de Hospedagem</h1>
-                                <p>R$ 150,00</p>
-                            </div>
-                            <div className="card4">
-                                <h1>Banco de Dados</h1>
-                                <p>R$ 190,00</p>
-                            </div>
-                        </div>
+                        <Reports />
                     </div>                    
                 </div>
             </div>

@@ -19,13 +19,13 @@ main {
     margin-right: 20px;
 } */
 
-.main__greenting > h1 {
+.main__greeting > h1 {
     font-size: 24px;
     color: #2e4a66;
     margin-bottom: 5px;
 }
 
-.main__greenting > p {
+.main__greeting > p {
     font-size: 14px;
     font-weight: 700;
     color: #a5aaad;

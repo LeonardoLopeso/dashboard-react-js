@@ -1,0 +1,99 @@
+.container__login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.login__screen {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 460px;
+    background: #f3f4f6;
+    border:1px solid #EBEBEB;
+    border-radius:5px;
+
+    box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #FFF;
+}
+
+.login__screen > i {
+    padding:12px 22px;
+    font-size:62px;
+    color:#777;
+    border: 1px solid #CCC;
+    border-radius:50%;
+}
+.login__screen > p {
+    color: #777;
+}
+
+.login__screen__credency {
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    width:260px;
+    height:125;
+    margin-top:55px;
+    border-radius:5px;
+}
+
+.login__screen__credency > button {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.login__input1,
+.login__input2 {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding:5px 10px;
+    margin-bottom:10px;
+    background:#FFF;
+    border-radius:3px;
+}
+
+.login__input1 > input,
+.login__input2 > input {
+    width: 100%;
+    height: 28px;
+    padding-left:8px;
+    border:none;
+    border-radius:2px;
+    color: #555;
+
+    transition:all 0.5s;
+    outline:none;
+}
+
+::placeholder {
+    color:#CCC;
+}
+
+.btn__logar {
+    width: 280px;
+    height:30px;
+    font-size:16px;
+    font-weight: 700;
+    margin-top:5px;
+    border-top:1px solid #CCC;
+    border-right:1px solid #CCC;
+    border-left:1px solid #CCC;
+    border-bottom:3px solid rgba(62, 161, 117, 0.3);
+    border-radius:2px;
+    cursor:pointer;
+    background: rgba(62, 161, 117, 0.3);
+    color: #3ea174;
+    
+    transition: all 0.5s;
+    outline:none;
+}
+.btn__logar:hover {
+    background:rgba(54, 137, 100, 0.3);
+}
