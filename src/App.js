@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 import Navbar from './components/navbar/Navbar';
+import Main from './components/main/Main';
 import Sidebar from './components/sidebar/Sidebar';
 
 import './App.css';
 
 // Link do vídeo base: https://youtu.be/g6YExOi0-Fc
-// Vídeo parado em 1:02:53/1:45:11
+// react-vis is library to graphics
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <div className="container">
       <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+      <Main />
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
     </div>
   );

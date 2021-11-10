@@ -27,7 +27,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-tachometer"></i>
           <a href="#">Área administrativa</a>
         </div>
-        <div className="sidebar__link">
+        {/* <div className="sidebar__link">
           <i className="fa fa-building"></i>
           <a href="#">Lojas</a>
         </div>
@@ -42,7 +42,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <div className="sidebar__link">
           <i className="fa fa-cutlery"></i>
           <a href="#">Pedidos</a>
-        </div>
+        </div> */}
         <h2>PESSOAS</h2>
         <div className="sidebar__link">
           <i className="fa fa-male"></i>
@@ -52,7 +52,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-user-circle"></i>
           <a href="#">Usuários</a>
         </div>
-        <div className="sidebar__link">
+        {/* <div className="sidebar__link">
           <i className="fa fa-money"></i>
           <a href="#">Pagamentos e custos</a>
         </div>
@@ -63,7 +63,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <div className="sidebar__link">
           <i className="fa fa-file-text"></i>
           <a href="#">Política de privacidade</a>
-        </div>
+        </div> */}
         <div className="sidebar__logout">
           <i className="fa fa-power-off"></i>
           <a href="#">Log out</a>
