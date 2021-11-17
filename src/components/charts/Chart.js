@@ -1,168 +1,132 @@
 import Chart, {
-    CommonSeriesSettings,
-    Series,
-    Aggregation,
-    Point,
-    ArgumentAxis,
-    ValueAxis,
-    Title,
-    Font,
-    Legend,
-    Label,
-    Tooltip,
-    Grid,
-    Export,
-    ValueErrorBar,
-    Pane,
-  } from 'devextreme-react/chart';
+  CommonSeriesSettings,
+  Series,
+  Aggregation,
+  Point,
+  ArgumentAxis,
+  ValueAxis,
+  Title,
+  Font,
+  Legend,
+  Label,
+  Tooltip,
+  Grid,
+  Export,
+  ValueErrorBar,
+  Pane,
+  Format,
+} from 'devextreme-react/chart';
 
-  export const weatherData = [{
-    month: 'Janeiro',
-    avgT: 14.1,
-    avgLowT: 9.1,
-    avgHighT: 19.1,
-    avgH: 70,
-  }, {
-    month: 'Fevereiro',
-    avgT: 14.7,
-    avgLowT: 9.8,
-    avgHighT: 19.6,
-    avgH: 74,
-  }, {
-    month: 'Março',
-    avgT: 15.6,
-    avgLowT: 10.6,
-    avgHighT: 20.4,
-    avgH: 79,
-  }, {
-    month: 'Abril',
-    avgT: 16.8,
-    avgLowT: 11.9,
-    avgHighT: 21.7,
-    avgH: 80,
-  }, {
-    month: 'Maio',
-    avgT: 18.2,
-    avgLowT: 13.6,
-    avgHighT: 22.7,
-    avgH: 83,
-  }, {
-    month: 'Junho',
-    avgT: 20.2,
-    avgLowT: 15.4,
-    avgHighT: 25,
-    avgH: 85,
-  }, {
-    month: 'Julho',
-    avgT: 22.6,
-    avgLowT: 17.3,
-    avgHighT: 27.9,
-    avgH: 86,
-  }, {
-    month: 'Agosto',
-    avgT: 23,
-    avgLowT: 17.7,
-    avgHighT: 28.4,
-    avgH: 86,
-  }, {
-    month: 'Semtembro',
-    avgT: 22.3,
-    avgLowT: 17,
-    avgHighT: 27.7,
-    avgH: 83,
-  }, {
-    month: 'Outubro',
-    avgT: 20.1,
-    avgLowT: 14.8,
-    avgHighT: 25.3,
-    avgH: 79,
-  }, {
-    month: 'Novembro',
-    avgT: 17.2,
-    avgLowT: 11.8,
-    avgHighT: 22.7,
-    avgH: 72,
-  }, {
-    month: 'Dezembro',
-    avgT: 14.6,
-    avgLowT: 9.5,
-    avgHighT: 19.7,
-    avgH: 68,
-  }];
+export const continentSources = [
+  { value: 'TmpChamada', name: 'Tempo Chamada' },
+  { value: 'QtdAtend', name: 'Quantidade Atendimento' },
+];
 
-const Graphic = () => {
+export const populationData = [{
+  time: '1',
+  TmpChamada: 15,
+  QtdAtend: 43,
+}, {
+  time: '2',
+  TmpChamada: 5,
+  QtdAtend: 50,
+}, {
+  time: '3',
+  TmpChamada: 8,
+  QtdAtend: 32,
+  
+}, {
+  time: '4',
+  TmpChamada: 16,
+  QtdAtend: 55,
+}, {
+  time: '5',
+  TmpChamada: 4,
+  QtdAtend: 32,
+}, {
+  time: '6',
+  TmpChamada: 15,
+  QtdAtend: 28,
+}, {
+  time: '7',
+  TmpChamada: 22,
+  QtdAtend: 27,
+}];
 
-    function customizeTooltip(pointInfo) {
-        return {
-          text: `${pointInfo.seriesName}: ${pointInfo.value
-          } (tempo: ${pointInfo.lowErrorValue
-          } - ${pointInfo.highErrorValue})`,
-        };
+
+const Graphic = () => {  
+  return (
+    <Chart
+      id="chart"
+      palette="Vintage"
+      dataSource={populationData}
+    >
+      <CommonSeriesSettings
+        argumentField="time"
+        type="fullstackedbar"
+      />
+      {
+        continentSources.map((item) => <Series
+          key={item.value}
+          valueField={item.value}
+          name={item.name} />)
+      }
+      <Series
+        axis="TmpChamada"
+        type="spline"
+        valueField="TmpChamada"
+        name="Variação"
+        color="#008fd8"
+      />
+
+      <ValueAxis>
+        <Grid visible={true} />
+      </ValueAxis>
+      <ValueAxis
+        name="TmpChamada"
+        position="right"
+        title="Tempo Chamadas"
+      >
+        <Grid visible={true} />
+      </ValueAxis>
+
+      <Legend
+        verticalAlignment="bottom"
+        horizontalAlignment="center"
+      />
+      <Export enabled={true} />
+      <Tooltip
+        enabled={true}
+        shared={true}
+        customizeTooltip={customizeTooltip}
+      >
+        <Format
+          type="largeNumber"
+          precision={1}
+        />
+      </Tooltip>
+      <Title text="" />
+    </Chart>
+  );
+}
+
+function customizeTooltip(pointInfo) {
+  const items = pointInfo.valueText.split('\n');
+  const color = pointInfo.point.getColor();
+
+  items.forEach((item, index) => {
+    if (item.indexOf(pointInfo.seriesName) === 0) {
+      const element = document.createElement('span');
+
+      element.textContent = item;
+      element.style.color = color;
+      element.className = 'active';
+
+      items[index] = element.outerHTML;
     }
-    
-    return (
+  });
 
-        <Chart
-            id="chart"
-            dataSource={weatherData}
-            defaultPane="bottom"
-        >
-        <CommonSeriesSettings argumentField="month" />
-        <Series
-          pane="top"
-          valueField="avgT"
-          name="Tempo médio da chamada, min"
-        >
-          <ValueErrorBar
-            lowValueField="avgLowT"
-            highValueField="avgHighT"
-            lineWidth={1}
-            opacity={0.8}
-          />
-        </Series>
-        <Series
-          pane="bottom"
-          valueField="avgH"
-          type="bar"
-          name="Qtd. de chamadas, Uni."
-        >
-          <ValueErrorBar
-            type="fixed"
-            value={3}
-            lineWidth={1}
-          />
-        </Series>
-
-        <Pane name="top" />
-        <Pane name="bottom" />
-
-        <ArgumentAxis>
-          <Label displayMode="stagger" />
-        </ArgumentAxis>
-        <ValueAxis pane="top">
-          <Grid visible={true} />
-          <Title text="Tempo Chamadas" />
-        </ValueAxis>
-        <ValueAxis
-          tickInterval={50}
-          pane="bottom"
-        >
-          <Grid visible={true} />
-          <Title text="Qtd. Atend." />
-        </ValueAxis>
-
-        <Legend
-          verticalAlignment="bottom"
-          horizontalAlignment="center"
-        />
-        <Export enabled={true} />
-        <Tooltip
-          enabled={true}
-          customizeTooltip={customizeTooltip}
-        />
-        {/* <Title text="" /> */}
-      </Chart>
-    )
+  return { text: items.join('\n') };
 }
 
 export default Graphic;

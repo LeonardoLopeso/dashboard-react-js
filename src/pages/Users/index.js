@@ -1,18 +1,30 @@
 import './index.css';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Reports from '../../components/reports';
+import api from '../../services/api';
 
 const Users = () => {
 
+    const [userList, setUserList] = useState(null);
+
     const [sidebarOpen, setSidebarOpen] = useState(false);
-  const openSidebar = () => {
-    setSidebarOpen(true);
-  };
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  }
+    const openSidebar = () => {
+        setSidebarOpen(true);
+    };
+    const closeSidebar = () => {
+        setSidebarOpen(false);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect( async () => {
+        const users = await api.get("/users");
+        setUserList(users.data);
+        // console.log(userList);
+    },[]);
+
+  
 
     return (
         <div className="container">
@@ -27,7 +39,7 @@ const Users = () => {
                     </div>
                     <br/>
                     <div className="reports-area">
-                        <Reports size={10} edit={true} destroy={true} />
+                        <Reports size={10} edit={true} destroy={true} source={userList} endpoint="/user" />
                     </div>
                 </div>
             </main>

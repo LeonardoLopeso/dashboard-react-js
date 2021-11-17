@@ -1,13 +1,31 @@
 import './Index.css';
 import { useNavigate } from 'react-router-dom';
-import { FaLockOpen, FaUser, FaSignInAlt } from 'react-icons/fa';
+import { FaLockOpen, FaUser, FaSignInAlt, FaDeaf } from 'react-icons/fa';
 import { useState } from 'react';
+import notify from "devextreme/ui/notify";
+
 import api from '../../services/api';
 
 const Login = () => {
+
+    const showToast = () => {
+        notify({
+            message: "Login ou Senha incorreto(s)",
+            type: "error", 
+            delayTime: 1500,
+            width: 300,
+            shading: true,
+            animation: {
+                hide: {type: "fade", duration: 40, to: 0},
+                show: { type: "fade", duration: 400, to: 1, from: 0 }
+            }
+        });
+    }
+
     const [user, setUser] = useState("");
     const [passwd, setPasswd] = useState("");
     const navigate = useNavigate();
+
     const login = async () => {
         try {
             const response = await api.post('/login', {email:user, password:passwd});
@@ -17,7 +35,7 @@ const Login = () => {
                 navigate('/dashboard');
             }
         }catch(error) {
-            alert("Algo de inesperado aconteceu.");
+            showToast();
         }
         
     }
@@ -37,7 +55,7 @@ const Login = () => {
                         <FaLockOpen color="#777" size="18" />
                         <input type="password" name="passwd" placeholder="****" value={passwd} onChange={(e) => {setPasswd(e.target.value)}} />
                     </div>
-                    <button className="btn__logar" value="Logar" onClick={() => login()}>
+                    <button type="submit" className="btn__logar" value="Logar" onClick={() => login()}>
                         Logar
                         &nbsp;<FaSignInAlt />
                     </button>

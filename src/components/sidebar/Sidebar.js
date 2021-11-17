@@ -12,7 +12,12 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
   useMemo(() => {
     setDataPermissionUser(JSON.parse(localStorage.getItem('user')));
-    console.log(JSON.parse(localStorage.getItem('user')));
+  },[]);
+
+  useEffect(() => {
+    if(!JSON.parse(localStorage.getItem('user'))) {
+      navigate('/');
+    }
   },[]);
 
   const logoff = () => {

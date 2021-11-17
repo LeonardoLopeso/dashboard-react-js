@@ -37,7 +37,7 @@
     flex-direction:column;
     width:260px;
     height:125;
-    margin-top:55px;
+    margin-top:45px;
     border-radius:5px;
 }
 
@@ -78,14 +78,14 @@
 
 .btn__logar {
     width: 280px;
-    height:30px;
+    height:40px;
     font-size:16px;
     font-weight: 700;
     margin-top:5px;
     border-top:1px solid #CCC;
     border-right:1px solid #CCC;
     border-left:1px solid #CCC;
-    border-bottom:3px solid rgba(62, 161, 117, 0.3);
+    border-bottom:2px solid rgba(62, 161, 117, 0.3);
     border-radius:2px;
     cursor:pointer;
     background: rgba(62, 161, 117, 0.3);

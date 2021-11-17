@@ -18,10 +18,10 @@ const Call = () => {
             <h1>Pressione o botão para iniciar a chamada</h1>
 
             <div className="call__input1" onClick={() => onCall()}>
-                Atendimente em Líbras
+                Atendimento em Líbras
             </div>
             <div className="call__input2" onClick={() => onCallLibra()}>                        
-                Atendendimento em Português
+                Atendimento em Português
             </div>                 
             
         </div>

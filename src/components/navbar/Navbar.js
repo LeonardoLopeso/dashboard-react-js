@@ -9,7 +9,7 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
             </div>
 
             <div className="navbar__left">
-                <a href="#">Opção 01</a>
+                {/* <a href="#">Opção 01</a> */}
                 {/* <a href="#">Opção 02</a> */}
                 {/* <a href="#" className="active_link">Opção 02</a> */}
             </div>

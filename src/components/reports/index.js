@@ -4,69 +4,58 @@ import {
 } from 'devextreme-react/data-grid';
 
 import { Form, Popup } from 'devextreme-react';
+import CustomStore from 'devextreme/data/custom_store';
+import DataSource from 'devextreme/data/data_source';
+import api from '../../services/api';
 
-export const employees = [{
-    "EmployeeID": 1,
-    "Nome complete": "Nancy Davolio",
-    "Posição": "Sales Representative",
-    "Título de cortesia": "Ms.",
-    "Data de nascimento": "1968-12-08T00:00:00.000Z",
-}, {
-    "EmployeeID": 2,
-    "Nome complete": "Andrew Fuller",
-    "Posição": "Vice President, Sales",
-    "Título de cortesia": "Dr.",
-    "Data de nascimento": "1972-02-19T00:00:00.000Z",
-}, {
-    "EmployeeID": 3,
-    "Nome complete": "Janet Leverling",
-    "Posição": "Sales Representative",
-    "Título de cortesia": "Ms.",
-    "Data de nascimento": "1983-08-30T00:00:00.000Z",
-}, {
-    "EmployeeID": 4,
-    "Nome complete": "Margaret Peacock",
-    "Posição": "Sales Representative",
-    "Título de cortesia": "Mrs.",
-    "Data de nascimento": "1957-09-19T00:00:00.000Z",
-}, {
-    "EmployeeID": 5,
-    "Nome complete": "Steven Buchanan",
-    "Posição": "Sales Manager",
-    "Título de cortesia": "Mr.",
-    "Data de nascimento": "1975-03-04T00:00:00.000Z",
-}, {
-    "EmployeeID": 6,
-    "Nome complete": "Michael Suyama",
-    "Posição": "Sales Representative",
-    "Título de cortesia": "Mr.",
-    "Data de nascimento": "1983-07-02T00:00:00.000Z",
-}, {
-    "EmployeeID": 7,
-    "Nome complete": "Robert King",
-    "Posição": "Sales Representative",
-    "Título de cortesia": "Mr.",
-    "Data de nascimento": "1980-05-29T00:00:00.000Z",
-}, {
-    "EmployeeID": 8,
-    "Nome complete": "Laura Callahan",
-    "Posição": "Inside Sales Coordinator",
-    "Título de cortesia": "Ms.",
-    "Data de nascimento": "1978-01-09T00:00:00.000Z",
-}, {
-    "EmployeeID": 9,
-    "Nome complete": "Brett Wade",
-    "Posição": "Sales Representative",
-    "Título de cortesia": "Mr.",
-    "Data de nascimento": "1986-01-27T00:00:00.000Z",
-}];
 
-const Reports = ({ size = 5, edit = false, destroy = false }) => {
+const Reports = ({ size = 5, edit = false, destroy = false, source = [], endpoint = "" }) => {
+
+    const removeData = async (key) => {
+        console.log("Remove key: ", key);
+        const respo = await api.delete(`${endpoint}/id=${key}`);
+        if(respo.status != 200) {
+            alert("Algo de inesperado aconteceu");
+            // window.location.reload();
+        }
+
+    }
+    
+    const updateData = (key, values) => {
+        console.log("key: ", key, "Values: ", values);
+
+    }
+
+    const custom_store = new CustomStore({
+        key: "id",
+        load: () => {
+            return source;
+        },
+        update: (key, values) => {
+            updateData(key, values);
+        },
+        remove: (key) => {
+          removeData(key);
+         window.location.reload();
+        },
+    });
+
+    const data_source = new DataSource({
+        store: custom_store,
+        onChanged: () => {
+            console.log(data_source)
+        },
+        onSubmit: () => {
+            console.log(data_source)
+        }
+    }
+    );
+
     return (
         <DataGrid
-            dataSource={employees}
+            dataSource={data_source}
             
-            keyExpr="EmployeeID">
+            keyExpr="id">
             <FilterRow visible={true} />
             <Editing 
                 allowUpdating={true} 
