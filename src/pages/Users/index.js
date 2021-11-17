@@ -20,11 +20,10 @@ const Users = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( async () => {
         const users = await api.get("/users");
-        setUserList(users.data);
+        console.log("---",users.data)
+        setUserList(users.data.filter((item) => item.active === 1));
         // console.log(userList);
     },[]);
-
-  
 
     return (
         <div className="container">
@@ -39,7 +38,13 @@ const Users = () => {
                     </div>
                     <br/>
                     <div className="reports-area">
-                        <Reports size={10} edit={true} destroy={true} source={userList} endpoint="/user" />
+                        <Reports 
+                            size={10} 
+                            edit={true} 
+                            destroy={true} 
+                            source={userList} 
+                            endpoint="users" 
+                        />
                     </div>
                 </div>
             </main>
