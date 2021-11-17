@@ -43,7 +43,8 @@
 }
 
 .sidebar__menu > h2 {
-    color: #13293D;
+    /* color: #13293D; */
+    color: #FFF;
     font-size: 16px;
     margin-top: 15px;
     margin-bottom: 5px;
@@ -76,7 +77,8 @@
 .sidebar__link a:focus {
     padding:7px;
     /* background: #646a8c; */
-    background: #13293D;
+    /* background: #13293D; */
+    background: rgba(225,225,225,0.2);
     border-radius: 3px;
 }
 

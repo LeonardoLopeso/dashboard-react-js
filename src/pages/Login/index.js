@@ -2,17 +2,24 @@ import './Index.css';
 import { useNavigate } from 'react-router-dom';
 import { FaLockOpen, FaUser, FaSignInAlt } from 'react-icons/fa';
 import { useState } from 'react';
+import api from '../../services/api';
 
 const Login = () => {
     const [user, setUser] = useState("");
     const [passwd, setPasswd] = useState("");
     const navigate = useNavigate();
-    const login = () => {
-        if(user == "" || passwd == "") {
-            alert('Login e senha não podem ficar vazio!');
-        }else{
-            navigate('/dashboard');
+    const login = async () => {
+        try {
+            const response = await api.post('/login', {email:user, password:passwd});
+            console.log(response.data);
+            if(response.status === 200) {
+                localStorage.setItem('user', JSON.stringify(response.data));
+                navigate('/dashboard');
+            }
+        }catch(error) {
+            alert("Algo de inesperado aconteceu.");
         }
+        
     }
 
     return (

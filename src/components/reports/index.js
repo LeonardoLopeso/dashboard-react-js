@@ -1,75 +1,87 @@
 import 'devextreme/dist/css/dx.light.css';
 import {
-    DataGrid, FilterRow, Paging, SearchPanel
+    DataGrid, Editing, FilterRow, Paging, SearchPanel
 } from 'devextreme-react/data-grid';
+
+import { Form, Popup } from 'devextreme-react';
 
 export const employees = [{
     "EmployeeID": 1,
-    "FullName": "Nancy Davolio",
-    "Position": "Sales Representative",
-    "TitleOfCourtesy": "Ms.",
-    "BirthDate": "1968-12-08T00:00:00.000Z",
+    "Nome complete": "Nancy Davolio",
+    "Posição": "Sales Representative",
+    "Título de cortesia": "Ms.",
+    "Data de nascimento": "1968-12-08T00:00:00.000Z",
 }, {
     "EmployeeID": 2,
-    "FullName": "Andrew Fuller",
-    "Position": "Vice President, Sales",
-    "TitleOfCourtesy": "Dr.",
-    "BirthDate": "1972-02-19T00:00:00.000Z",
+    "Nome complete": "Andrew Fuller",
+    "Posição": "Vice President, Sales",
+    "Título de cortesia": "Dr.",
+    "Data de nascimento": "1972-02-19T00:00:00.000Z",
 }, {
     "EmployeeID": 3,
-    "FullName": "Janet Leverling",
-    "Position": "Sales Representative",
-    "TitleOfCourtesy": "Ms.",
-    "BirthDate": "1983-08-30T00:00:00.000Z",
+    "Nome complete": "Janet Leverling",
+    "Posição": "Sales Representative",
+    "Título de cortesia": "Ms.",
+    "Data de nascimento": "1983-08-30T00:00:00.000Z",
 }, {
     "EmployeeID": 4,
-    "FullName": "Margaret Peacock",
-    "Position": "Sales Representative",
-    "TitleOfCourtesy": "Mrs.",
-    "BirthDate": "1957-09-19T00:00:00.000Z",
+    "Nome complete": "Margaret Peacock",
+    "Posição": "Sales Representative",
+    "Título de cortesia": "Mrs.",
+    "Data de nascimento": "1957-09-19T00:00:00.000Z",
 }, {
     "EmployeeID": 5,
-    "FullName": "Steven Buchanan",
-    "Position": "Sales Manager",
-    "TitleOfCourtesy": "Mr.",
-    "BirthDate": "1975-03-04T00:00:00.000Z",
+    "Nome complete": "Steven Buchanan",
+    "Posição": "Sales Manager",
+    "Título de cortesia": "Mr.",
+    "Data de nascimento": "1975-03-04T00:00:00.000Z",
 }, {
     "EmployeeID": 6,
-    "FullName": "Michael Suyama",
-    "Position": "Sales Representative",
-    "TitleOfCourtesy": "Mr.",
-    "BirthDate": "1983-07-02T00:00:00.000Z",
+    "Nome complete": "Michael Suyama",
+    "Posição": "Sales Representative",
+    "Título de cortesia": "Mr.",
+    "Data de nascimento": "1983-07-02T00:00:00.000Z",
 }, {
     "EmployeeID": 7,
-    "FullName": "Robert King",
-    "Position": "Sales Representative",
-    "TitleOfCourtesy": "Mr.",
-    "BirthDate": "1980-05-29T00:00:00.000Z",
+    "Nome complete": "Robert King",
+    "Posição": "Sales Representative",
+    "Título de cortesia": "Mr.",
+    "Data de nascimento": "1980-05-29T00:00:00.000Z",
 }, {
     "EmployeeID": 8,
-    "FullName": "Laura Callahan",
-    "Position": "Inside Sales Coordinator",
-    "TitleOfCourtesy": "Ms.",
-    "BirthDate": "1978-01-09T00:00:00.000Z",
+    "Nome complete": "Laura Callahan",
+    "Posição": "Inside Sales Coordinator",
+    "Título de cortesia": "Ms.",
+    "Data de nascimento": "1978-01-09T00:00:00.000Z",
 }, {
     "EmployeeID": 9,
-    "FullName": "Brett Wade",
-    "Position": "Sales Representative",
-    "TitleOfCourtesy": "Mr.",
-    "BirthDate": "1986-01-27T00:00:00.000Z",
+    "Nome complete": "Brett Wade",
+    "Posição": "Sales Representative",
+    "Título de cortesia": "Mr.",
+    "Data de nascimento": "1986-01-27T00:00:00.000Z",
 }];
 
-const Reports = () => {
+const Reports = ({ size = 5, edit = false, destroy = false }) => {
     return (
         <DataGrid
             dataSource={employees}
             
             keyExpr="EmployeeID">
             <FilterRow visible={true} />
+            <Editing 
+                allowUpdating={true} 
+                allowDeleting={destroy} 
+                allowAdding={edit} 
+                mode="form"
+                useIcons={true} 
+                texts={{confirmDeleteMessage:"Corpstek"}} 
+            >
+            <Form labelLocation="top"/>
+            <Popup showTitle={true} title="Row in the editing state"
+            />
+            </Editing>
             <SearchPanel placeholder="Pesquisar" visible={true} />
-            <Paging
-                    defaultPageSize={5}
-                    defaultPageIndex={0} />
+            <Paging defaultPageSize={size} defaultPageIndex={0} />
         </DataGrid>
     );
 }

@@ -1,12 +1,31 @@
 import './Sidebar.css';
-import logo from '../../assets/leonardo.jpeg';
+import logo from '../../assets/avatar.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
-
+  const [isActive, setActive] = useState(false);
+  
   const navigate = useNavigate();
+
+  const [dataPermissionUser, setDataPermissionUser] = useState(false);
+
+  useMemo(() => {
+    setDataPermissionUser(JSON.parse(localStorage.getItem('user')));
+    console.log(JSON.parse(localStorage.getItem('user')));
+  },[]);
+
   const logoff = () => {
+    localStorage.clear();
     navigate('/');
+  }
+
+  const painel = () => {
+    navigate('/dashboard');
+  }
+
+  const usersRouter = () => {
+    navigate('/users');
   }
 
   return (
@@ -26,14 +45,22 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           ></i>
         </div>
         <div className="sidebar__menu">
-          <div className="sidebar__link active_menu_link">
+          <div className="sidebar__link">
             <i className="fa fa-minus-square"></i>
             <a href="#">Home</a>
           </div>
           <h2>ADMIN</h2>
           <div className="sidebar__link">
             <i className="fa fa-tachometer"></i>
-            <a href="#">Área administrativa</a>
+            <a href="#" onClick={() => painel()}>Painel geral</a>
+          </div>
+          <div className="sidebar__link">
+            <i className="fa fa-tachometer"></i>
+            <a href="#" onClick={() => painel()}>Painel Atendente</a>
+          </div>
+          <div className="sidebar__link">
+            <i className="fa fa-tachometer"></i>
+            <a href="#" onClick={() => painel()}>Painel Interprete</a>
           </div>
           <h2>PESSOAS</h2>
           <div className="sidebar__link">
@@ -42,7 +69,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           </div>
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <a href="#">Usuários</a>
+            <a href="#" onClick={() => usersRouter()}>Usuários</a>
           </div>
           <h2>RELATÓRIOS</h2>
           <div className="sidebar__link">

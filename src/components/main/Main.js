@@ -5,14 +5,14 @@ import { BsCalendar2Month } from 'react-icons/bs';
 import { CgScreen } from 'react-icons/cg';
 import Reports from '../reports';
 
-
 const Main = () => {
+
     return (
         <main>
             <div className="main__container">
                 <div className="main__title">
                     <div className="main__greeting">
-                        <h1>Olá Leonardo Lopes</h1>
+                        <h1>Olá Corpstek</h1>
                         <p>Bem vindo ao seu painel</p>
                     </div>
                 </div>
