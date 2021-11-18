@@ -6,6 +6,7 @@ import Users from '../pages/Users';
 import Call from '../pages/Call';
 import Video from '../pages/Video';
 import VideoL from '../pages/VideoL';
+import AreaInterpreter from '../pages/Interpreter';
 
 
 const Routers = () => {
@@ -18,6 +19,7 @@ const Routers = () => {
                 <Route path="/call" element={<Call/>} />
                 <Route path="/video" element={<Video/>} />
                 <Route path="/videol" element={<VideoL/>} />
+                <Route path="/interpreter" element={<AreaInterpreter/>} />
             </Routes>
         </BrowserRouter>
     );

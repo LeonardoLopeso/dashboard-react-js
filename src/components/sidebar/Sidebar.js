@@ -29,6 +29,10 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     navigate('/dashboard');
   }
 
+  const areaInterprete = () => {
+    navigate('/interpreter');
+  }
+
   const usersRouter = () => {
     navigate('/users');
   }
@@ -65,7 +69,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           </div>
           <div className="sidebar__link">
             <i className="fa fa-tachometer"></i>
-            <a href="#" onClick={() => painel()}>Painel Interprete</a>
+            <a href="#" onClick={() => areaInterprete()}>Painel Interprete</a>
           </div>
           <h2>PESSOAS</h2>
           <div className="sidebar__link">
