@@ -1,0 +1,43 @@
+.video__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.video__wrapper {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom:60px;
+}
+
+.video__input1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    /* height: 400px; */
+    color:#FFF;
+    margin-right: 20px;
+    border-radius: 7px;
+    
+    transition:all ease 0.4s;
+}
+
+.video__input1 > video {
+    background:#000;
+}
+
+.video__input2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 400px;
+   
+    border-radius: 7px;
+    
+    transition:all ease 0.4s;
+}

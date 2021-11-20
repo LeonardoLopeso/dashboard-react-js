@@ -4,6 +4,7 @@ import Dashboard from '../pages/Dashboard';
 import Login from '../pages/Login';
 import Users from '../pages/Users';
 import Call from '../pages/Call';
+import CallVideos from '../pages/CallVideos';
 import Video from '../pages/Video';
 import VideoL from '../pages/VideoL';
 import AreaInterpreter from '../pages/Interpreter';
@@ -17,6 +18,7 @@ const Routers = () => {
                 <Route path="" element={<Login/>} />
                 <Route path="/users" element={<Users/>} />
                 <Route path="/call" element={<Call/>} />
+                <Route path="/call-video" element={<CallVideos />} />
                 <Route path="/video" element={<Video/>} />
                 <Route path="/videol" element={<VideoL/>} />
                 <Route path="/interpreter" element={<AreaInterpreter/>} />

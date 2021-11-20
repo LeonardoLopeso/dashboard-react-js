@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { FaMicrophoneSlash, FaPhoneSlash } from "react-icons/fa";
+import { FaMicrophoneSlash, FaPhoneAlt, FaPhoneSlash } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { io } from "socket.io-client";
+import VideoPlayer from "../VideoPlayer";
 import "./index.css";
 
 const Video = () => {
@@ -25,9 +26,12 @@ const Video = () => {
   return (
     <div className="container__video">
       <div className="video__wrapper">
-        <div className="video__input1"></div>
-        <div className="video__input2"></div>
-        <div className="video__input3"></div>
+        <div className="video__input1">
+          <VideoPlayer />
+        </div>
+        {/* <div className="video__input2">
+          <h1 style={{color:"#999"}}><FaPhoneAlt /> &nbsp; Chamando...</h1>
+        </div> */}
       </div>
 
       <div className="btn__video">
