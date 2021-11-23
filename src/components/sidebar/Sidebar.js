@@ -1,44 +1,48 @@
-import './Sidebar.css';
-import logo from '../../assets/avatar.jpg';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import "./Sidebar.css";
+import logo from "../../assets/avatar.jpg";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
-  const [isActive, setActive] = useState(false);
-  
+  // const [isActive, setActive] = useState(false);
+
   const navigate = useNavigate();
 
-  const [dataPermissionUser, setDataPermissionUser] = useState(false);
+  const [, setDataPermissionUser] = useState(false);
 
   useMemo(() => {
-    setDataPermissionUser(JSON.parse(localStorage.getItem('user')));
-  },[]);
+    setDataPermissionUser(JSON.parse(localStorage.getItem("FLY@User")));
+  }, []);
 
   useEffect(() => {
-    if(!JSON.parse(localStorage.getItem('user'))) {
-      navigate('/');
+    if (!JSON.parse(localStorage.getItem("FLY@User"))) {
+      navigate("/");
     }
-  },[]);
+  }, [navigate]);
 
   const logoff = () => {
     localStorage.clear();
-    navigate('/');
-  }
+    navigate("/");
+  };
+
+  const dashboard = () => {
+    navigate("/dashboard");
+  };
 
   const painel = () => {
-    navigate('/dashboard');
-  }
+    navigate("/dashboard");
+  };
 
   const areaInterprete = () => {
-    navigate('/interpreter');
-  }
+    navigate("/interpreter");
+  };
 
   const usersRouter = () => {
-    navigate('/users');
-  }
+    navigate("/users");
+  };
 
   return (
-    <div className={sidebarOpen ? 'sidebar-responsive' : ''} id="sidebar">
+    <div className={sidebarOpen ? "sidebar-responsive" : ""} id="sidebar">
       <div>
         <div className="sidebar__title">
           <div className="sidebar__img">
@@ -54,48 +58,50 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           ></i>
         </div>
         <div className="sidebar__menu">
-          <div className="sidebar__link">
+          <div className="sidebar__link" onClick={() => dashboard()}>
             <i className="fa fa-minus-square"></i>
-            <a href="#">Home</a>
+            <spam>Home</spam>
           </div>
           <h2>ADMIN</h2>
-          <div className="sidebar__link">
+          <div className="sidebar__link" onClick={() => painel()}>
             <i className="fa fa-tachometer"></i>
-            <a href="#" onClick={() => painel()}>Painel geral</a>
+            <spam href="#">Painel geral</spam>
           </div>
-          <div className="sidebar__link">
+          <div className="sidebar__link" onClick={() => painel()}>
             <i className="fa fa-tachometer"></i>
-            <a href="#" onClick={() => painel()}>Painel Atendente</a>
+            <spam href="#">Painel Atendente</spam>
           </div>
-          <div className="sidebar__link">
+          <div className="sidebar__link" onClick={() => areaInterprete()}>
             <i className="fa fa-tachometer"></i>
-            <a href="#" onClick={() => areaInterprete()}>Painel Interprete</a>
+            <spam href="#">Painel Interprete</spam>
           </div>
           <h2>PESSOAS</h2>
           <div className="sidebar__link">
             <i className="fa fa-male"></i>
-            <a href="#">Administradores</a>
+            <spam href="#">Administradores</spam>
           </div>
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <a href="#" onClick={() => usersRouter()}>Usuários</a>
+            <spam href="#" onClick={() => usersRouter()}>
+              Usuários
+            </spam>
           </div>
           <h2>RELATÓRIOS</h2>
           <div className="sidebar__link">
             <i className="fa fa-users"></i>
-            <a href="#">Atendimentos</a>
+            <spam href="#">Atendimentos</spam>
           </div>
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <a href="#">Atendimentos</a>
+            <spam href="#">Atendimentos</spam>
           </div>
           <div className="sidebar__logout" onClick={() => logoff()}>
             <i className="fa fa-power-off"></i>
-            <a href="#">Log out</a>
+            <spam href="#">Log out</spam>
           </div>
         </div>
       </div>
-      <div className="copy__right" style={{color:"#FFF"}}>
+      <div className="copy__right" style={{ color: "#FFF" }}>
         © Desenvolvido por Corps Teknologi {new Date().getFullYear()}
       </div>
     </div>

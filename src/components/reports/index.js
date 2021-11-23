@@ -28,10 +28,9 @@ const Reports = ({
   }, [source]);
 
   const removeData = async (key) => {
-    
     const respo = await api.delete(`${endpoint}/${key}`);
 
-    if (respo.status != 200) {
+    if (respo.status !== 200) {
       alert("Algo de inesperado aconteceu");
       // window.location.reload();
     } else {
@@ -39,11 +38,11 @@ const Reports = ({
     }
   };
 
-  const updateData = async (key, values) => {
-    
-    const respo = await api.put(`${endpoint}/${key}`, values);
-    
-  };
+  // const updateData = async (key, values) => {
+
+  //   const respo = await api.put(`${endpoint}/${key}`, values);
+
+  // };
 
   const custom_store = new CustomStore({
     key: "id",
@@ -60,14 +59,13 @@ const Reports = ({
       data_source.reload();
     },
     insert: async (values) => {
-      
       let data = {
-          name: values.name,
-          email: values.email,
-          password: values.password,
-      }
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
       const respo = await api.post(`${endpoint}`, data);
-      
+
       setDataSource([...dataSource, respo.data]);
       //   data_source.reload();
     },
@@ -76,17 +74,15 @@ const Reports = ({
   const data_source = new DataSource({
     store: custom_store,
     onChanged: () => {
-      
       //   data_source.reload();
     },
     onSubmit: () => {
-      
       data_source.reload();
     },
   });
   const isActive = (data) => {
     let msg = data.text ? "Sim" : "Não";
-    let color = data.text ? "success" : "danger";
+    let color = data.text ? "success" : "default";
 
     return (
       <Button
@@ -99,9 +95,8 @@ const Reports = ({
   };
 
   const isLogin = (data) => {
-    
-    let msg = data.text != 0 ? "Sim" : "Não";
-    let color = data.text != 0? "success" : "danger";
+    let msg = data.text !== 0 ? "Sim" : "Não";
+    let color = data.text !== 0 ? "success" : "danger";
 
     return (
       <Button
@@ -114,15 +109,13 @@ const Reports = ({
   };
 
   const isDisable = async (data) => {
-    
-    const respo = await api.delete(`${endpoint}/${data.key}`);
+    await api.delete(`${endpoint}/${data.key}`);
     setDataSource(dataSource.filter((element) => element.id !== data.key));
     // window.location.reload();
   };
 
   const isLogoff = async (data) => {
-    
-    const respo = await api.put(`${endpoint}/${data.key}`, { is_logged:0 });
+    await api.put(`${endpoint}/${data.key}`, { is_logged: 0 });
     // console.log(respo);
     // window.location.reload();
   };
@@ -136,12 +129,17 @@ const Reports = ({
         allowAdding={edit}
         mode="form"
         useIcons={true}
-        texts={{ confirmDeleteMessage: "Corpstek" }}
+        // texts={{ confirmDeleteMessage: "Corpstek" }}
       >
         <Form labelLocation="top" />
         <Popup showTitle={true} title="Row in the editing state" />
       </Editing>
-      <Column alignment="left" caption={"ID"} dataField="id" allowEditing={false}></Column>
+      <Column
+        alignment="left"
+        caption={"ID"}
+        dataField="id"
+        allowEditing={false}
+      ></Column>
       <Column caption={"NOME"} dataField="name"></Column>
       <Column caption={"SENHA"} dataField="password"></Column>
       <Column caption={"E-MAIL"} dataField="email"></Column>
@@ -151,6 +149,7 @@ const Reports = ({
         caption={"ATIVO"}
         dataField="active"
         cellRender={(data) => isActive(data)}
+        allowEditing={false}
       ></Column>
       <Column
         alignment="center"
