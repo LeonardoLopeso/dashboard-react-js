@@ -7,7 +7,8 @@ import Call from "../pages/CallTotem";
 import CallVideos from "../pages/CallVideos";
 import Video from "../pages/Video";
 import VideoL from "../pages/VideoL";
-import AreaInterpreter from "../pages/Interpreter";
+import PainelClerk from "../pages/Painel/Clerk";
+import PainelInterpreter from "../pages/Painel/Interpreter";
 
 const Routers = () => {
   return (
@@ -20,7 +21,9 @@ const Routers = () => {
         <Route path="/call-video" element={<CallVideos />} />
         <Route path="/video" element={<Video />} />
         <Route path="/videol" element={<VideoL />} />
-        <Route path="/interpreter" element={<AreaInterpreter />} />
+        <Route path="/pclerk" element={<PainelClerk />} />
+        <Route path="/pinterpreter" element={<PainelInterpreter />} />
+        {/* Case don't not works */}
       </Routes>
     </BrowserRouter>
   );

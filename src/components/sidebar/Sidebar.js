@@ -9,14 +9,18 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
   const navigate = useNavigate();
 
   const [, setDataPermissionUser] = useState(false);
+  const [userInfo, setUserInfo] = useState("");
 
   useMemo(() => {
     setDataPermissionUser(JSON.parse(localStorage.getItem("FLY@User")));
   }, []);
 
   useEffect(() => {
-    if (!JSON.parse(localStorage.getItem("FLY@User"))) {
+    const arr = JSON.parse(localStorage.getItem("FLY@User"));
+    if (!arr) {
       navigate("/");
+    } else {
+      setUserInfo(arr.user.name);
     }
   }, [navigate]);
 
@@ -32,9 +36,12 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
   const painel = () => {
     navigate("/dashboard");
   };
+  const areaClerk = () => {
+    navigate("/pclerk");
+  };
 
   const areaInterprete = () => {
-    navigate("/interpreter");
+    navigate("/pinterpreter");
   };
 
   const usersRouter = () => {
@@ -47,7 +54,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <div className="sidebar__title">
           <div className="sidebar__img">
             <img src={logo} alt="logo" />
-            <h1>Corpstek</h1>
+            <h1>{userInfo}</h1>
           </div>
 
           <i
@@ -60,44 +67,51 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <div className="sidebar__menu">
           <div className="sidebar__link" onClick={() => dashboard()}>
             <i className="fa fa-minus-square"></i>
-            <spam>Home</spam>
+            <span>Home</span>
           </div>
           <h2>ADMIN</h2>
           <div className="sidebar__link" onClick={() => painel()}>
             <i className="fa fa-tachometer"></i>
-            <spam href="#">Painel geral</spam>
+            <span href="#">Painel Geral</span>
           </div>
-          <div className="sidebar__link" onClick={() => painel()}>
+          <div className="sidebar__link" onClick={() => areaClerk()}>
             <i className="fa fa-tachometer"></i>
-            <spam href="#">Painel Atendente</spam>
+            <span href="#">Painel Atendente</span>
           </div>
           <div className="sidebar__link" onClick={() => areaInterprete()}>
             <i className="fa fa-tachometer"></i>
-            <spam href="#">Painel Interprete</spam>
+            <span href="#">Painel Interprete</span>
           </div>
-          <h2>PESSOAS</h2>
-          <div className="sidebar__link">
+          <h2>CADASTROS</h2>
+          {/* <div className="sidebar__link">
             <i className="fa fa-male"></i>
-            <spam href="#">Administradores</spam>
-          </div>
+            <span href="#">Administradores</span>
+          </div> */}
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <spam href="#" onClick={() => usersRouter()}>
+            <span href="#" onClick={() => usersRouter()}>
               Usuários
-            </spam>
+            </span>
+          </div>
+          <div className="sidebar__link">
+            <i class="fa fa-window-maximize"></i>
+            <span href="#" onClick={() => navigate("/totems")}>
+              Totems
+            </span>
           </div>
           <h2>RELATÓRIOS</h2>
-          <div className="sidebar__link">
+          {/* <div className="sidebar__link">
             <i className="fa fa-users"></i>
-            <spam href="#">Atendimentos</spam>
-          </div>
+            <span href="#">Atendimentos</span>
+          </div> */}
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <spam href="#">Atendimentos</spam>
+            <span href="#">Atendimentos</span>
           </div>
           <div className="sidebar__logout" onClick={() => logoff()}>
+            <br />
             <i className="fa fa-power-off"></i>
-            <spam href="#">Log out</spam>
+            <span href="#">Log out</span>
           </div>
         </div>
       </div>
