@@ -53,11 +53,21 @@ const ContextProvider = ({ children }) => {
 
     const info = getTotemInfo();
 
-    socket.emit("subscribe", { key: info.totem.id });
-    socket.on("me", (id) => {
-      setMe(id);
-      console.log(id);
-    });
+    if (info.totem) {
+      socket.emit("subscribe", { key: info.totem.id });
+      socket.on("me", (id) => {
+        setMe(id);
+        console.log(id);
+      });
+    }
+    
+    if(info.clerk) {
+      socket.emit("call_user", { key: info.clerk.id });
+      socket.on("call_user", (data) => {
+        console.log(data);
+      });
+    }
+
 
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });

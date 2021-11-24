@@ -1,4 +1,18 @@
 .area__call {
+  display:flex;
   align-items: center;
-  text-align: center;
+  height: 45px;
+  padding:10px;
+  margin-bottom:10px;
+
+  background-color: #FFF;
+  border-radius:8px;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #fff;
+}
+
+.area__call > div > h4 {
+  color:#fff;
+  padding:5px 15px;
+  border-radius:4px;
+  background-color: #ef5350    ;
 }

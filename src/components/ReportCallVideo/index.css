@@ -1,0 +1,68 @@
+.report__wrapper {
+    
+    width: 97%;
+    height: 250px;
+    padding: 20px;
+}
+
+.report__content {
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width:100%;
+    height: 100%;
+    padding-top:20px;
+    background:#FFF;
+    border-radius:8px;
+    box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #fff;
+}
+
+.report__wrapper > h3 {
+    width:100%;
+    padding:20px 0;
+}
+.report__wrapper > h3 {
+    color:#a5aaad;
+    font-size: 1.2rem;
+}
+.report__content > div > h4 {
+    color:#444;
+    margin-bottom:20px;
+}
+.report__content > textarea {
+    width:95%;
+    height: 150px;
+
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    resize: vertical;
+    
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.report__content > .report__align__button {
+    display:flex;
+    justify-content: flex-end;
+    width:96%;
+}
+.report__content >.report__align__button > button {
+    width: 120px;
+    height: 32px;
+    font-size:1rem;
+    color:#fff;
+    margin-top:10px;
+    background-color: rgb(29, 173, 29);
+    border:0;
+    border-radius:5px;
+
+    cursor:pointer;
+}
+.report__content > .report__align__button > button:hover  {
+    background-color:rgb(9, 138, 9);
+}

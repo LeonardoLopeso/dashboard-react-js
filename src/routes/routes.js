@@ -8,7 +8,9 @@ import CallVideos from "../pages/CallVideos";
 import Video from "../pages/Video";
 import VideoL from "../pages/VideoL";
 import PainelClerk from "../pages/Painel/Clerk";
+import VideoCallClerk from "../pages/Painel/Clerk/VideoCallClerk/";
 import PainelInterpreter from "../pages/Painel/Interpreter";
+import ReportCallVideo from "../components/ReportCallVideo";
 
 const Routers = () => {
   return (
@@ -22,6 +24,10 @@ const Routers = () => {
         <Route path="/video" element={<Video />} />
         <Route path="/videol" element={<VideoL />} />
         <Route path="/pclerk" element={<PainelClerk />} />
+
+        <Route path="/vcallclerk" element={<VideoCallClerk />} />
+        <Route path="/report-video-call" element={<ReportCallVideo />} />
+
         <Route path="/pinterpreter" element={<PainelInterpreter />} />
         {/* Case don't not works */}
       </Routes>
