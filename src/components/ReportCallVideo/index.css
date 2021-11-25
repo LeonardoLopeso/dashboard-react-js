@@ -23,7 +23,7 @@
     padding:20px 0;
 }
 .report__wrapper > h3 {
-    color:#a5aaad;
+    color:#444;
     font-size: 1.2rem;
 }
 .report__content > div > h4 {
@@ -38,7 +38,7 @@
     font-size: 1rem;
     line-height: 1.5;
     color: #495057;
-    resize: vertical;
+    resize: none;
     
     background-color: #fff;
     background-clip: padding-box;

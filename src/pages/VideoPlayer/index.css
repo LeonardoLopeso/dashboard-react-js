@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 5%;
   margin-top: 4%;
 }
 
@@ -18,20 +18,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45%;
-  /* height: 400px; */
+  padding:10px;
+  /* width: 45%; */
+  height: 400px;
   color: #fff;
-  margin-right: 20px;
-  border-radius: 7px;
+  
 
   transition: all ease 0.4s;
+}
+
+.video__input1 > video {
+  width:100%;
+  margin-right: 20px;
+  border-radius: 7px;
 }
 
 /* .video__input1 > video {
     background:#000;
 } */
 
-.video__input2 {
+/* .video__input2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,15 +47,15 @@
   border-radius: 7px;
 
   transition: all ease 0.4s;
-}
+} */
 
 .btn__video {
   width: 100%;
   text-align: center;
 }
 .btn__video svg {
-  font-size: 62px;
-  padding: 32px;
+  font-size: 52px;
+  padding: 22px;
 }
 .btn__video #muteTwo {
   color: #fff;

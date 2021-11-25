@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: calc(100% - 40px);
   color: #fff;
-  /* background: #5d78ff; */
   background: #006494;
   grid-area: sidebar;
   overflow-y: auto;
@@ -17,7 +17,8 @@
   justify-content: space-between;
   align-items: center;
   color: #f3f4f5;
-  margin-bottom: 30px;
+  padding-bottom: 34px;
+  border-bottom:3px solid rgba(225, 225, 225, 0.2)
 }
 
 .sidebar__img {
@@ -40,6 +41,7 @@
 .sidebar__title > i {
   font-size: 18px;
   display: none;
+  cursor:pointer;
 }
 
 .sidebar__menu > h2 {
@@ -59,26 +61,29 @@
   border-radius: 3px;
   margin-bottom: 5px;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sidebar__link:hover {
+  background:rgba(225, 225, 225, 0.2);
 }
 
 .active_menu_link {
   background: rgba(225, 225, 225, 0.2);
   color: #fff;
 }
-.active_menu_link a {
+.active_menu_link span {
   color: #fff !important;
 }
 
-.sidebar__link > a {
+.sidebar__link > span {
   text-decoration: none;
   color: #e8f1f2;
   font-weight: 700;
 }
 
-.sidebar__link a:focus {
+.sidebar__link > span:focus {
   padding: 7px;
-  /* background: #646a8c; */
-  /* background: #13293D; */
   background: rgba(225, 225, 225, 0.2);
   border-radius: 3px;
 }
@@ -89,24 +94,38 @@
 }
 
 .sidebar__logout {
+  width:100%;
+  text-align: center;
   margin-top: 20px;
-  padding: 10px;
-  color: #e65061;
+  margin-bottom:10px;
+  font-size: 18px;
+  padding: 10px 0;
+  /* color: #e65061; */
   /* color: #E8F1F2; */
-  border-top: 1px solid rgba(225, 225, 225, 0.2);
+  background: rgba(225, 225, 225, 0.1);
+  /* border-top: 1px solid rgba(225, 225, 225, 0.2); */
+  cursor:pointer;
+  transition:all ease 0.5s;
+}
+.sidebar__logout:hover {
+  background: rgba(225, 225, 225, 0.2);
 }
 
 .sidebar__logout > a {
   text-decoration: none;
-  color: #e56061;
+  /* color: #e56061; */
   /* color: #E8F1F2; */
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .sidebar__logout > i {
+  color:#FFF;
   margin-right: 10px;
   font-size: 18px;
+}
+.sidebar__logout > span {
+  color:#FFF;
 }
 
 .sidebar-responsive {
@@ -126,6 +145,7 @@
 @media only screen and (max-width: 978px) {
   #sidebar {
     display: none;
+    /* height: calc(100vh - 41px); */
   }
   .sidebar__title > i {
     display: inline;

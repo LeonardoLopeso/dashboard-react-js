@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
-  // const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(false);
 
   const navigate = useNavigate();
 
@@ -72,50 +72,50 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <h2>ADMIN</h2>
           <div className="sidebar__link" onClick={() => painel()}>
             <i className="fa fa-tachometer"></i>
-            <span href="#">Painel Geral</span>
+            <span>Painel Geral</span>
           </div>
           <div className="sidebar__link" onClick={() => areaClerk()}>
             <i className="fa fa-tachometer"></i>
-            <span href="#">Painel Atendente</span>
+            <span>Painel Atendente</span>
           </div>
           <div className="sidebar__link" onClick={() => areaInterprete()}>
             <i className="fa fa-tachometer"></i>
-            <span href="#">Painel Interprete</span>
+            <span>Painel Interprete</span>
           </div>
           <h2>CADASTROS</h2>
           {/* <div className="sidebar__link">
             <i className="fa fa-male"></i>
-            <span href="#">Administradores</span>
+            <span>Administradores</span>
           </div> */}
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <span href="#" onClick={() => usersRouter()}>
+            <span onClick={() => usersRouter()}>
               Usuários
             </span>
           </div>
           <div className="sidebar__link">
             <i class="fa fa-window-maximize"></i>
-            <span href="#" onClick={() => navigate("/totems")}>
+            <span onClick={() => navigate("/totems")}>
               Totems
             </span>
           </div>
           <h2>RELATÓRIOS</h2>
           {/* <div className="sidebar__link">
             <i className="fa fa-users"></i>
-            <span href="#">Atendimentos</span>
+            <span>Atendimentos</span>
           </div> */}
           <div className="sidebar__link">
             <i className="fa fa-user-circle"></i>
-            <span href="#">Atendimentos</span>
+            <span>Atendimentos</span>
           </div>
-          <div className="sidebar__logout" onClick={() => logoff()}>
-            <br />
-            <i className="fa fa-power-off"></i>
-            <span href="#">Log out</span>
-          </div>
+
         </div>
       </div>
       <div className="copy__right" style={{ color: "#FFF" }}>
+        <div className="sidebar__logout" onClick={() => logoff()}>
+          <i className="fa fa-power-off"></i>
+          <span><strong>Sair</strong></span>
+        </div>
         © Desenvolvido por Corps Teknologi {new Date().getFullYear()}
       </div>
     </div>
